@@ -1,180 +1,151 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thông Báo Từ Hệ Thống</title>
-    <!-- Nhúng font chữ đẹp từ Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* Reset CSS cơ bản */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Nền tối mờ (giống màn hình chờ của web) */
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: rgba(15, 23, 42, 0.85); /* Màu xanh đen tối */
-            backdrop-filter: blur(8px); /* Làm mờ hậu cảnh */
-            font-family: 'Quicksand', sans-serif;
-            overflow: hidden;
-        }
-
-        /* Khung thông báo chính */
-        .notification-card {
-            position: relative;
-            background: linear-gradient(135deg, #ff007f, #7f00ff, #00d2ff, #00ff87);
-            background-size: 300% 300%;
-            animation: gradientBG 6s ease infinite;
-            padding: 40px 50px;
-            border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(127, 0, 255, 0.4);
-            text-align: center;
-            max-width: 90%;
-            width: 550px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            z-index: 10;
-        }
-
-        /* Hiệu ứng nền màu chuyển động */
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Vòng tròn Loading (Đang tải) */
-        .spinner {
-            width: 70px;
-            height: 70px;
-            border: 6px solid rgba(255, 255, 255, 0.3);
-            border-top: 6px solid #ffffff;
-            border-radius: 50%;
-            animation: spin 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
-            margin-bottom: 25px;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Chữ thông báo chính */
-        .title {
-            color: #ffffff;
-            font-size: 32px;
-            font-weight: 700;
-            line-height: 1.3;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.8);
-            margin-bottom: 15px;
-            animation: pulseText 2s infinite;
-        }
-
-        /* Hiệu ứng nhịp đập cho chữ */
-        @keyframes pulseText {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.03); text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 255, 255, 1); }
-        }
-
-        /* Chữ phụ bên dưới */
-        .subtitle {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 16px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        /* --- KHU VỰC BẢN QUYỀN CỦA MANH CODER LOR --- */
-        .coder-credit {
-            margin-top: 30px;
-            padding: 8px 20px;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 50px;
-            color: #fff;
-            font-size: 14px;
-            letter-spacing: 1px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            animation: floatCredit 3s ease-in-out infinite;
-        }
-
-        .coder-credit strong {
-            color: #00ff87; /* Màu xanh neon */
-            text-shadow: 0 0 10px #00ff87, 0 0 20px #00ff87;
-            font-weight: 700;
-        }
-
-        /* Hiệu ứng lơ lửng cho badge */
-        @keyframes floatCredit {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-        /* ------------------------------------------- */
-
-        /* Trang trí các bong bóng sáng (dùng CSS) */
-        .notification-card::before,
-        .notification-card::after {
-            content: '';
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            filter: blur(10px);
-        }
-
-        .notification-card::before {
-            width: 100px;
-            height: 100px;
-            top: -30px;
-            left: -30px;
-        }
-
-        .notification-card::after {
-            width: 150px;
-            height: 150px;
-            bottom: -40px;
-            right: -40px;
-        }
-        
-        /* Tương thích trên điện thoại */
-        @media (max-width: 600px) {
-            .notification-card {
-                padding: 30px 20px;
-            }
-            .title {
-                font-size: 24px;
-            }
-            .subtitle {
-                font-size: 14px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Luyện trắc nghiệm Lịch sử 12 – GK1 - Manh coder lor :))</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f6fb;--card:#fff;--tx:#1b2330;--mut:#667085;--bd:#dfe4ee;--ac:#2f5bea;--acs:#e8eefe;--ok:#1f8a4c;--oks:#e3f5ea;--no:#c0392b;--nos:#fbe8e5;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10141d;--card:#181e2b;--tx:#e8ecf4;--mut:#9aa4b8;--bd:#2a3244;--ac:#7b9bff;--acs:#1d2742;--ok:#2a9d5f;--oks:#14301f;--no:#d9534a;--nos:#38191a}}
+:root[data-theme="dark"]{--bg:#10141d;--card:#181e2b;--tx:#e8ecf4;--mut:#9aa4b8;--bd:#2a3244;--ac:#7b9bff;--acs:#1d2742;--ok:#2a9d5f;--oks:#14301f;--no:#d9534a;--nos:#38191a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:'Be Vietnam Pro',system-ui,sans-serif;line-height:1.55}
+.wrap{max-width:760px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:1.6rem;margin:8px 0 4px}
+.sub{color:var(--mut);margin:0 0 20px;font-size:.92rem}
+.modes{display:grid;gap:12px;margin-bottom:16px}
+.mode{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:18px 20px;text-align:left;cursor:pointer;font:inherit;color:inherit;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:transform .15s,border-color .15s}
+.mode:hover{transform:translateY(-2px);border-color:var(--ac)}
+.mode b{display:block;font-size:1.05rem}.mode span{color:var(--mut);font-size:.88rem}
+.cnt{font-size:1.7rem;font-weight:700;color:var(--ac)}
+.chk{display:block;margin-bottom:12px;font-size:.92rem}
+.top{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.meta{color:var(--mut);font-size:.88rem}
+.ghost{background:none;border:1px solid var(--bd);border-radius:10px;padding:6px 12px;color:var(--tx);cursor:pointer;font:inherit;font-size:.88rem}
+.bar{height:6px;background:var(--bd);border-radius:3px;overflow:hidden;margin-bottom:16px}
+.bar i{display:block;height:100%;background:var(--ac);transition:width .3s}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:22px;animation:in .3s}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.qn{color:var(--ac);font-weight:700;font-size:.85rem;margin-bottom:6px}
+.qt{font-weight:600;font-size:1.08rem;margin-bottom:16px}
+.opt{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;background:var(--card);border:2px solid var(--bd);border-radius:12px;padding:12px 14px;margin-bottom:10px;cursor:pointer;font:inherit;color:inherit;transition:.15s}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;background:var(--acs);color:var(--ac);display:flex;align-items:center;justify-content:center;font-size:.85rem}
+.opt:hover{border-color:var(--ac)}
+.locked .opt{pointer-events:none}
+.opt.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{background:var(--no);border-color:var(--no);color:#fff}
+.opt.ok b,.opt.no b{background:rgba(255,255,255,.25);color:#fff}
+.opt.rev{background:var(--oks);border-color:var(--ok)}
+.fb{margin-top:6px;font-weight:600}.fb.ok{color:var(--ok)}.fb.no{color:var(--no)}
+.note{color:var(--mut);font-size:.88rem;margin-top:4px}
+.btn{margin:14px 8px 0 0;background:var(--ac);color:#fff;border:0;border-radius:12px;padding:11px 22px;font:inherit;font-weight:600;cursor:pointer}
+.btn.sec{background:var(--acs);color:var(--ac)}
+.pas{background:var(--acs);border-radius:12px;padding:12px 16px;margin-bottom:16px;max-height:260px;overflow:auto;font-size:.92rem}
+.pas p{margin:0 0 8px}
+.st{border:2px solid var(--bd);border-radius:12px;padding:12px 14px;margin-bottom:10px}
+.st.ok{border-color:var(--ok);background:var(--oks)}.st.no{border-color:var(--no);background:var(--nos)}
+.tf{display:flex;gap:8px;margin-top:8px}
+.tf button{flex:1;border:2px solid var(--bd);background:var(--card);color:inherit;border-radius:10px;padding:8px;font:inherit;font-weight:600;cursor:pointer}
+.tf button:hover{border-color:var(--ac)}
+.st.done .tf button{pointer-events:none}
+.tf button.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.tf button.no{background:var(--no);border-color:var(--no);color:#fff}
+.tf button.rev{border-color:var(--ok);background:var(--oks)}
+.ex{font-size:.88rem;margin-top:8px;color:var(--mut)}
+.res{text-align:center}.big{font-size:3rem;font-weight:700;color:var(--ac)}
+.wl{text-align:left;margin:16px 0;padding-left:18px;color:var(--mut);font-size:.9rem}
+</style>
 </head>
 <body>
+<div class="wrap" id="app"></div>
+<script>
+const D={"mc": [{"n": 1, "q": "Năm 1945, tổ chức quốc tế nào sau đây được thành lập nhằm mục đích giữ gìn hoà bình thế giới?", "o": ["Liên hợp quốc (UN).", "Hiệp hội các quốc gia Đông Nam Á (ASEAN).", "Liên minh châu Âu (EU).", "Tổ chức Hiệp ước Bắc Đại Tây Dương (NATO)."], "a": 0}, {"n": 2, "q": "Tổ chức Liên hợp quốc chính thức được thành lập năm 1945 với sự kiện nào sau đây?", "o": ["Các thành viên Hội đồng Bảo an soạn thảo quy chế hiến chương.", "Các thành viên Hội đồng Bảo an thông qua dự thảo hiến chương.", "Các nước thành viên soạn thảo Hiến chương Liên hợp quốc,", "Các nước thành viên phê chuẩn Hiến chương Liên hợp quốc."], "a": 3}, {"n": 3, "q": "Hiệp hội các quốc gia Đông Nam Á và tổ chức Liên hợp quốc đều chú trọng đến", "o": ["Hợp tác phát triển giữa các thành viên.", "Việc hạn chế những ảnh hưởng của Mỹ.", "Xây dựng các chế độ xã hội khác nhau.", "Xây dựng tiềm lực kinh tế và quân sự."], "a": 0}, {"n": 4, "q": "Vì sao, thắng lợi của cách mạng Trung Quốc đã mở ra bước đột phá đầu tiên đối với Trật tự thế giới hai cực lanta?", "o": ["Đã làm thay đổi tính chất quan hệ đối ngoại giữa Mỹ và Liên Xô.", "Trung Quốc vươn lên trở thành một cực trong trật tự thế giới đa cực.", "Đã phá vỡ những độc quyền của Liên Xô ở Đông Bắc Trung Quốc.", "Đã mở rộng phạm vi ảnh hưởng của chủ nghĩa xã hội trên thế giới."], "a": 2}, {"n": 5, "q": "Thắng lợi của phong trào giải phóng dân tộc trên thế giới và sự ra đời của hàng loạt các quốc gia độc lập đã", "o": ["góp phần làm suy yếu trật tự thế giới hai cực I-an-ta.", "đánh dấu trật tự hai cực I-an-ta sụp đổ hoàn toàn", "tăng cường phạm vi ảnh hưởng của Mĩ và Liên Xô", "làm sụp đổ hoàn toàn chế độ xã hội chủ nghĩa ở Liên Xô"], "a": 0}, {"n": 6, "q": "Đâu không phải là đặc điểm của xu thế đa cực trong quan hệ quốc tế thời kỳ sau Chiến tranh lạnh?", "o": ["Có sự tham gia của nhiều nước, nhiều trung tâm.", "Các nước đang phát triển không thể tăng cường tầm ảnh hưởng.", "Không chủ thể nào áp đảo hoặc chi phối sự phát triển của thế giới.", "Sự gia tăng vai trò của các trung tâm, tổ chức quốc tế."], "a": 1}, {"n": 7, "q": "Điểm khác biệt giữa quan hệ quốc tế thời kỳ sau Chiến tranh lạnh với thời kỳ Chiến tranh lạnh là gì?", "o": ["Mỹ và Trung Quốc là hai siêu cường nắm hoàn toàn quyền chi phối quan hệ quốc tế.", "Mâu thuẫn ngày càng gay gắt giữa giữa hai hệ thống tư bản chủ nghĩa và xã hội chủ nghĩa.", "Liên Xô và Mỹ dù thế lực suy giảm nhưng vẫn đứng đầu và chi phối quan hệ quốc tế.", "Xuất hiện nhiều trung tâm quyền lực mới và có vai trò lớn đối với quan hệ quốc tế."], "a": 3}, {"n": 8, "q": "“Không có một trung tâm quyền lực thống trị, thay vào đó, nhiều quốc gia, khu vực tạo ra thế cân bằng về kinh tế, chính trị, quân sự toàn cầu”. Đoạn thông tin trên phản ánh đặc điểm của trật tự thế giới nào sau đây?", "o": ["trật tự đa cực", "Trật tự đơn cực", "Trật tự hai cực I-an-ta", "Trật tự Vécxai – Oasinhton"], "a": 0}, {"n": 9, "q": "Tổ chức Hiệp hội các quốc gia Đông Nam Á (ASEAN) ra đời năm 1967 do các nước trong khu vực nhận thấy cần", "o": ["đoàn kết để cùng giải phóng dân tộc.", "tăng cường sức mạnh kinh tế, quân sự.", "tạo ra sự cân bằng sức mạnh với Mỹ.", "hợp tác với nhau để cùng phát triển."], "a": 3}, {"n": 10, "q": "Nhận xét nào sau đây là đúng về sự thành lập của tổ chức Hiệp hội các quốc gia Đông Nam Á (ASEAN)?", "o": ["Sự thành lập của tổ chức nhằm đối phó với những thách thức từ bên trong và bên ngoài.", "Sự thành lập tổ chức là kết quả tất yếu của sự phát triển vượt bậc về lực lượng sản xuất.", "Những tác động từ bên ngoài là yếu tố quyết định, then chốt dẫn đến sự ra đời của tổ chức.", "Các nước sáng lập tổ chức có trình độ phát triển đồng đều nhưng đối lập về thể chế chính trị."], "a": 0}, {"n": 11, "q": "Các thành viên sáng lập tổ chức ASEAN (1967) gồm", "o": ["Inđônêxia, Malaixia, Xingapo,Thái Lan, Brunây.", "Inđônêxia, Malaixia, Xingapo,Thái Lan, Philippin", "Inđônêxia, Malaixia, Xingapo,Thái Lan,Việt Nam.", "Inđônêxia, Malaixia, Xingapo, Thái Lan, Mianma"], "a": 1}, {"n": 12, "q": "Nội dung nào sau đây thể hiện sự đóng góp của Việt Nam trong Hiệp hội các quốc gia Đông Nam Á (ASEAN)?", "o": ["Việt Nam có vai trò nòng cốt trong việc thông Tuyên bố Băng Cốc, Tầm nhìn ASEAN 2020, Hiến chương ASEAN.", "Việt Nam đã tích cực thúc đẩy kết nạp Lào Mianma và Campuchia, vào Hiệp hội các quốc gia Đông Nam Á.", "Quyết định trong quan hệ hợp tác chiến lược giữa ASEAN với các cường quốc lớn như Mĩ, Nga, Trung Quốc.", "Chủ động đưa ra sáng kiến hình thành Cộng đồng văn hóa - xã hội và Cộng đồng Chính trị – An ninh ASEAN."], "a": 1}, {"n": 13, "q": "Một trong những quốc gia Ủy viên thường trực Hội đồng bảo an Liên hợp quốc là", "o": ["Nhật.", "Đức.", "Anh.", "Bỉ."], "a": 2}, {"n": 14, "q": "Quốc gia nào sau đây từng có công dân là Tổng thư ký Liên hợp quốc?", "o": ["Hàn Quốc.", "Trung Quốc.", "Việt Nam.", "Nhật Bản."], "a": 0}, {"n": 15, "q": "Tổng thư ký là người đứng đầu cơ quan nào của Liên hợp quốc?", "o": ["Ban thư ký.", "Đại hội đồng.", "Hội đồng Bảo an.", "Tòa án quốc tế."], "a": 0}, {"n": 16, "q": "Một trong những hạn chế lớn của tổ chức Liên hợp quốc là", "o": ["có quá nhiều thành viên.", "bị các nước lớn chi phối.", "thiếu nhân sự chất lượng.", "không có trụ sở cố định."], "a": 1}, {"n": 17, "q": "Đâu không phải là nguyên tắc hoạt động của Liên hợp quốc?", "o": ["Giải quyết tranh chấp hoà bình.", "Hợp tác phát triển kinh tế, văn hóa", "Quyền bình đẳng giữa các dân tộc.", "Không được đe dọa sử dụng vũ lực."], "a": 1}, {"n": 18, "q": "Việt Nam có thể vận dụng nguyên tắc hoạt động nào của Liên hợp quốc để giải quyết vấn đề ở Biển Đông?", "o": ["Giải quyết các tranh chấp bằng biện pháp hoà bình.", "Sự nhất trí của các nước thường trực Hội đồng bảo an.", "quyền bình đẳng giữa các thành viên Liên hợp quốc.", "không đe doạ dùng vũ lực tấn công các quốc gia khác."], "a": 0}, {"n": 19, "q": "Đâu là nguyên nhân chủ yếu làm cho số lượng thành viên của Liên hợp quốc tăng nhanh trong giai đoạn 1945-2007", "o": ["Gia nhập Liên hợp quốc để nhận được viện trợ kinh tế.", "Tác động của trật tự thế giới 2 cực và Chiến tranh lạnh.", "Giai đoạn này có nhiều quốc gia đã giành được độc lập.", "Nhiều vấn đề quá sức giải quyết đơn độc của các nước."], "a": 2}, {"n": 20, "q": "Đâu là ý nghĩa của việc Việt Nam được bầu làm Ủy viên không thường trực Hội đồng Bảo an Liên hợp quốc trong các năm 2008 và 2009", "o": ["Nền kinh tế Việt Nam có sự phát triển vượt bậc.", "Tình hình an ninh - chính trị tương đối ổn định.", "Việt Nam đã xoá bỏ được tỉnh trạng tham nhũng.", "Vị thế, uy tin được nâng cao trên trường quốc tế."], "a": 3}, {"n": 21, "q": "Nội dung nào là cơ sở để tổ chức Liên hợp quốc đề ra nguyên tắc “Giải quyết các tranh chấp quốc tế bằng biện pháp hòa bình“?", "o": ["Hòa bình là nguyện vọng, xu thế của các dân tộc trên thế giới.", "Hòa bình là điều kiện quyết định để duy trì chế độ chính trị.", "Mục đích của Liên hợp quốc là cân bằng lợi ích của các nước.", "Tranh chấp, xung đột xảy ra ở hầu hết các khu vực trên thế giới."], "a": 0}, {"n": 22, "q": "Nguyên tắc hoạt động “chung sống hòa bình và sự nhất trí giữa 5 cường quốc Liên Xô, Mỹ, Anh, Pháp, Trung Quốc“ được Liên hợp quốc đề ra nhằm mục đích chính là", "o": ["đảm bảo quyền lợi của hai cường quốc Mỹ và Liên Xô.", "cân bằng quyền lực chính trị giữa hai cực Liên Xô, Mỹ.", "thực hiện thỏa thuận trong hội nghị I-an-ta của Mỹ và Anh.", "ngăn chặn việc các cường quốc thao túng Liên hợp quốc."], "a": 3}, {"n": 23, "q": "Nhận định nào về vị trí, vai trò của Liên Hợp quốc trên trường quốc tế là không đúng ?", "o": ["Là diễn đàn quốc tế lớn nhất, vừa hợp tác vừa đấu tranh.", "Thúc đẩy mối quan hệ hợp tác hữu nghị giữa các dân tộc.", "Là tổ chức liên kết chính trị - kinh tế lớn nhất hành tinh.", "Giúp đỡ các quốc gia dân tộc về y tế, văn hóa, giáo dục."], "a": 2}, {"n": 24, "q": "Mối quan hệ hợp tác của Liên hợp quốc với Việt Nam hiện nay là", "o": ["hợp tác theo hướng ngày càng sâu rộng và hiệu quả.", "giúp đỡ giải quyết hậu quả nặng nề của chiến tranh.", "viện trợ không hoàn lại để phát triển kinh tế, văn hóa.", "thúc đẩy cải cách thực hiện các quyền tự do dân chủ."], "a": 0}, {"n": 25, "q": "Nét tương đồng về mục tiêu của Liên hợp quốc so với các tổ chức quốc tế và khu vực khác là", "o": ["tập hợp thành viên vào liên minh quân sự.", "đem lại lợi ích cho các nước thành viên.", "thực hiện quyền tự do dân chủ, dân quyền.", "trao đổi về vốn, khoa học và kinh nghiệm."], "a": 1}, {"n": 26, "q": "Nét tương đồng về mục đích thành lập của Liên hợp quốc so với Hội Quốc Liên là", "o": ["duy trì hoà bình và an ninh thế giới.", "ngăn chặn âm mưu bá chủ của Mỹ.", "thực hiện các quyền tự do dân chủ.", "trao đổi công nghệ và kinh nghiệm."], "a": 0}, {"n": 28, "q": "Hội nghị I-an-ta (2-1945) đã thông qua quyết định nào?", "o": ["Phân chia nước Đức thành bốn khu vực chiếm đóng của Đồng minh.", "Phân công quân đội Đồng minh giải giáp quân Nhật ở Đông Dương.", "Thành lập tổ chức Hội quốc liên để duy trì hòa bình, an ninh thế giới.", "Phân chia phạm vi ảnh hưởng giữa các nước lớn."], "a": 3, "note": "Cả A và D đều là nội dung hội nghị I-an-ta; theo SGK, trọng tâm là phân chia phạm vi ảnh hưởng nên chọn D."}, {"n": 29, "q": "Quyết định nước của hội nghị I-an-ta (2-1945) đã tạo điều kiện cho thực dân Pháp trở lại xâm lược Đông Dương?", "o": ["Liên Xô không được đưa quân đội vào Đông Dương.", "Anh, Mỹ mở đường cho Pháp chiếm lại Đông Dương.", "Đông Nam Á thuộc phạm vi ảnh hưởng của phương Tây.", "Quân đội Trung Hoa Dân quốc giải giáp phát xít Nhật."], "a": 2}, {"n": 30, "q": "Nhận xét nào là đúng về việc thỏa thuận đóng quân và phân chia phạm vi ảnh hưởng giữa ba cường quốc trong Hội nghị I-an-ta (2-1945)?", "o": ["Thực hiện việc tiêu diệt tận gốc chủ nghĩa thực dân.", "Thực chất là phân chia quyền lợi giữa Mỹ và Liên Xô.", "Nhanh chóng triệt tiêu sức mạnh của các nước tư bản.", "Tạo điều kiện để tái vũ trang cho Đức chống Liên Xô."], "a": 1}], "hi": [{"n": 1, "q": "Hiệp hội các quốc gia Đông Nam Á ra đời trong bối cảnh nào sau đây?", "o": ["Ba nước Đông Dương đang tiến hành đổi mới.", "Trật tự thế giới đa cực chi phối quan hệ quốc tế.", "Tất cả các nước thuộc địa đã giành được độc lập.", "Cục diện chiến tranh lạnh đang bao trùm thế giới."], "a": 3}, {"n": 2, "q": "Nội dung nào dưới đây phản ánh không đúng mục đích thành lập của ASEAN?", "o": ["tạo ra sức mạnh chung để hạn chế ảnh hưởng của Mỹ.", "thúc đẩy việc nghiên cứu Đông Nam Á.", "thúc đẩy tăng trưởng kinh tế, tiến bộ xã hội.", "thúc đẩy hợp tác, giúp đỡ lẫn nhau về kinh tế, xã hội, văn hóa."], "a": 0}, {"n": 3, "q": "Hiệp hội các quốc gia Đông Nam Á (ASEAN) được thành lập năm 1967 khi", "o": ["các nước trong khu vực Đông Nam Á giành độc lập hoàn toàn.", "cuộc chiến tranh xâm lược Việt Nam của Mĩ thất bại.", "một số tổ chức khu vực đã ra đời ở Đông Nam Á", "Liên Xô và Mĩ đã tuyên bố chấm dứt Chiến tranh lạnh."], "a": 2}, {"n": 4, "q": "Hiệp hội các quốc gia Đông Nam Á (ASEAN) ra đời năm 1967 nhằm đáp ứng nhu cầu", "o": ["tạo sự cân bằng sức mạnh với Mĩ.", "tăng cường sức mạnh quân sự.", "đoàn kết để giải phóng dân tộc.", "hợp tác để cùng phát triển."], "a": 3}, {"n": 5, "q": "Một trong những mục tiêu quan trọng của tổ chức ASEAN là", "o": ["xóa bỏ áp bức bóc lột và nghèo nàn lạc hậu.", "xây dựng khối liên minh chính trị và quân sự.", "xây dựng khối liên minh kinh tế và quân sự.", "thúc đẩy tăng trưởng kinh tế và phát triển văn hóa."], "a": 3}, {"n": 6, "q": "Tổ chức ASEAN xác định mục tiêu thúc đẩy hòa bình và ổn định khu vực thông qua việc", "o": ["tôn trọng công lý và luật pháp quốc tế", "đề cao công tác nghiên cứu Đông Nam Á", "giúp đỡ lẫn nhau về mặt kinh tế, văn hóa", "ra sức mở rộng quan hệ với các cường quốc"], "a": 0}, {"n": 7, "q": "Yếu tố khách quan thúc đẩy sự ra đời của tổ chức ASEAN là", "o": ["nhu cầu phát triển kinh tế của các quốc gia Đông Nam Á.", "mong muốn duy trì hòa bình và ổn định khu vực.", "các nước Đông Nam Á gặp khó khăn trong xây dựng và phát triển đất nước.", "những tổ chức hợp tác mang tính khu vực trên thế giới xuất hiện ngày càng nhiều."], "a": 3}, {"n": 8, "q": "“Nỗ lực phát triển khu vực Đông Nam Á thành khu vực hòa bình, tự do, thịnh vượng và thống nhất tất cả các nước thành viên” là mục đích của tổ chức nào sau đây?", "o": ["Hiệp hội Đông Nam Á (ASA)", "Tổ chức MAPHILINDO", "Hiệp hội các quốc gia Đông Nam Á (ASEAN)", "Tổ chức Liên hợp quốc (UN)"], "a": 2}, {"n": 9, "q": "Từ năm 1967 đến năm 1976, ASEAN có hoạt động nào sau đây?", "o": ["Thông qua bản Hiến chương ASEAN.", "Ra tuyên bố về khu vực hòa bình, tự do và trung lập.", "Lần lượt kết nạp Bru-nây và Việt Nam làm thành viên.", "Ra tuyên bố về việc xây dựng Cộng đồng ASEAN."], "a": 1}, {"n": 10, "q": "Từ năm 1976 đến năm 1999 là giai đoạn tổ chức ASEAN", "o": ["hoàn thiện cơ cấu tổ chức, tăng cường hợp tác quốc tế.", "xây dựng và phát triển cộng đồng ASEAN vững mạnh.", "thành lập và bước đầu phát triển về cơ cấu tổ chức.", "ổn định chính trị khu vực và mở rộng thành viên"], "a": 3, "note": "Giai đoạn 1976–1999: ASEAN phát triển hợp tác và mở rộng thành viên (đủ 10 nước năm 1999)."}, {"n": 11, "q": "Thành tựu quan trọng của tổ chức ASEAN trong thập niên 90 của thế kỉ XX là", "o": ["ra tuyên bố về khu vực hòa bình, tự do và trung lập.", "thành lập và phát triển Cộng đồng ASEAN.", "thông qua bản Hiến chương ASEAN .", "phát triển số lượng thành viên của tổ chức."], "a": 3}, {"n": 12, "q": "Văn kiện Tầm nhìn ASEAN 2020 được thông qua đã đáp ứng được nguyện vọng của các quốc gia thành viên về một khu vực Đông Nam Á", "o": ["gắn kết, hữu nghị, ổn định và hợp tác.", "nhất thể hóa, không có cạnh tranh.", "không có sự chênh lệch về trình độ phát triển.", "không chịu ảnh hưởng của các cường quốc."], "a": 0}, {"n": 14, "q": "Văn kiện nào sau đây đã tạo cơ sở pháp lý để xây dựng Cộng đồng ASEAN?", "o": ["Tuyên bố Ba-li I", "Tuyên bố về Khu vực Hòa bình, Tự do và Trung lập", "Hiến chương ASEAN", "Tầm nhìn ASEAN 2020."], "a": 2}, {"n": 15, "q": "Văn kiện Lộ trình xây dựng Cộng đồng ASEAN (2009 – 2015) đã", "o": ["xác định nguyên tắc trong quan hệ giữa các nước.", "tạo hành lang pháp lý cho xây dựng Cộng đồng ASEAN.", "vạch ra kế hoạch để xây dựng Cộng đồng ASEAN.", "đánh dấu Cộng đồng ASEAN chính thức có hiệu lực."], "a": 2}, {"n": 16, "q": "Việc xây dựng Cộng đồng ASEAN không nhằm mục tiêu nào sau đây?", "o": ["Đưa ASEAN thành tổ chức hợp tác liên chính phủ có liên kết sâu rộng.", "Mở rộng quan hệ hợp tác với bên ngoài thông qua nhiều khuôn khổ.", "Khiến các nước thành viên có sự ràng buộc hơn trên cơ sở pháp lý.", "Xóa bỏ khoảng cách và sự chênh lệch trình độ phát triển giữa các nước."], "a": 3}, {"n": 17, "q": "Cộng đồng Văn hóa – Xã hội ASEAN không bao gồm nội dung cơ bản nào sau đây?", "o": ["Đảm bảo môi trường bền vững, tạo dựng bản sắc ASEAN.", "Phát triển con người, đảm bảo phúc lợi và bảo hiểm xã hội.", "Thu hẹp khoảng cách phát triển, xây dựng bình đẳng xã hội.", "Hội nhập đầy đủ, sâu sắc vào nền kinh tế chung của toàn cầu."], "a": 3}, {"n": 18, "q": "Nội dung nào sau đây là thách thức của Cộng đồng ASEAN đến từ bên ngoài?", "o": ["Sự chênh lệch đáng kể về thu nhập và trình độ phát triển giữa các quốc gia thành viên.", "Sự cạnh tranh chiến lược giữa các nước lớn tại khu vực châu Á – Thái Bình Dương.", "Sự khác biệt trong hệ thống chính trị và tôn giáo giữa các quốc gia trong Cộng đồng.", "Sự tương đồng trong sản xuất một số ngành nghề tạo sự cạnh tranh trong xuất khẩu."], "a": 1}, {"n": 19, "q": "Đâu không phải là nội dung của Cộng đồng Chính trị - An ninh ASEAN?", "o": ["Điều phối sự hợp tác an ninh, chính trị trong khu vực.", "Tạo khối phòng thủ chung.", "Thúc đẩy hòa bình, ổn định, hợp tác trong khu vực.", "Mở rộng an ninh bên ngoài."], "a": 1}, {"n": 20, "q": "Hiểu thế nào là một Cộng đồng kinh tế ASEAN (AEC)?", "o": ["Là khuôn khổ hợp tác xây dựng ASEAN thành thị trường, hệ thống sản xuất thống nhất.", "Là khuôn khổ hợp tác an ninh, chính trị toàn diện hướng tới mục tiêu xây dựng một trường hòa bình và an ninh.", "Xây dựng một ASEAN lấy con người làm trung tâm có trách nhiệm xã hội, xây dựng tình đoàn kết, thống nhất bền lâu.", "Nhằm thành lập một cộng đồng thịnh vượng và hòa bình ở Đông Nam Á."], "a": 0}], "ds": [{"n": 1, "p": ["Đọc đoạn tư liệu sau đây:", "“Trật tự thế giới mới này được hình thành như thế nào, còn tuỳ thuộc ở nhiều nhân tổ: Sự phát triển về thực lực kinh tế, chính trị, quân sự của các cường quốc Mỹ, Nga, Trung Quốc, Anh, Pháp, Nhật Bản, Đức trong cuộc chạy đua về sức mạnh quốc gia tổng hợp..... Sự lớn mạnh của lực lượng cách mạng thế giới (sự thành bại của công cuộc cải cách, đổi mới ở các nước xã hội chủ nghĩa....); Sự phát triển của cách mạng khoa học – kĩ thuật sẽ còn tiếp tục tạo ra những “đột phá” và biến chuyển trên cục diện thế giới“.", "(Nguyễn Anh Thái (Chủ biên), Lịch sử thế giới hiện đại, NXB Giáo dục Việt Nam, Hà Nội, 2021, tr.424)"], "s": [{"t": "Sau Chiến tranh lạnh, một trật tự thế giới mới đã được xác lập với sự vươn lên của các cường quốc.", "a": false, "e": "Trật tự thế giới mới đang trong quá trình hình thành, chưa “đã xác lập”: đoạn trích nói còn tuỳ nhiều nhân tố."}, {"t": "Sức mạnh tổng hợp giữa các quốc gia đó là nền kinh tế phát triển, quốc phòng hùng mạnh và nền chính trị ổn định.", "a": false, "e": "Đoạn trích nêu sức mạnh tổng hợp gồm thực lực kinh tế, chính trị, quân sự."}, {"t": "Sự gia tăng vị thế, sức mạnh, tầm ảnh hưởng của các cường quốc Mỹ, Nga, Trung Quốc là một biểu hiện của xu thế đa cực từ đầu thế kỉ XXI.", "a": true, "e": "Sự gia tăng vị thế của Mỹ, Nga, Trung Quốc là biểu hiện của xu thế đa cực."}, {"t": "Tương quan lực lượng giữa các cường quốc là yếu tố quyết định đưa đến việc thiết lập trật tự thế giới mới.", "a": true, "e": "Tương quan lực lượng giữa các cường quốc quyết định việc hình thành trật tự mới."}]}, {"n": 2, "p": ["Cho đoạn tư liệu sau đây:", "“Cuối cùng, hội nghị đã đi đến quyết định sau đây:", "Về việc kết thúc chiến tranh ở châu Âu và châu Á – Thái Bình Dương, ba cường quốc đã thống nhất mục đích là tiêu diệt tận gốc chủ nghĩa phát xít Đức và chủ nghĩa quân phiệt Nhật, nhanh chóng kết thúc chiến tranh ở châu Âu và Liên Xô đã tham gia chiến tranh chống Nhật ở châu Á – Thái Bình Dương sau khi chiến tranh kết thúc ở châu Âu.", "Ba cường quốc thống nhất thành lập tổ chức Liên hợp quốc dựa trên nền tảng và nguyên tắc cơ bản là sự nhất trí giữa năm cường quốc – Liên Xô, Mĩ, Anh, Pháp và Trung Quốc, để giữ gìn hoà bình, an ninh và trật tự thế giới sau chiến tranh.", "Hội nghị đã đi đến thoả thuận đóng quân tại các nước nhằm giải giáp quân đội phát xít và phân chia phạm vi ảnh hưởng ở châu Âu và châu Á”.", "(Nguyễn Anh Thái (Chủ biên), Lịch sử thế giới hiện đại, NXB Giáo dục Việt Nam, Hà Nội, 2021, tr.223, 224)."], "s": [{"t": "Đoạn tư liệu đề cập đến nội dung cơ bản của Hội nghị I-an-ta (1945) và Xan Pranxixco (1945) về việc xây dựng trật tự thế giới mới sau Chiến tranh thế giới thứ hai", "a": false, "e": "Tư liệu chỉ nói về Hội nghị I-an-ta, không đề cập Xan Phran-xi-xcô."}, {"t": "Những nội dung của Hội nghị I-an-ta là cơ sở để hình thành phe Đồng minh và sự phân tuyến sâu sắc sau khi chiến tranh thế giới thứ hai hoàn toàn kết thúc", "a": false, "e": "Phe Đồng minh hình thành từ trước I-an-ta; I-an-ta đặt cơ sở cho trật tự hai cực sau chiến tranh."}, {"t": "Những quyết định của Hội I-an-ta (1945) thúc đẩy chiến tranh thế giới thứ hai nhanh kết thúc hơn và đặt cơ sở quan trọng đưa tới ra đời của tổ chức Liên hợp quốc", "a": true, "e": "I-an-ta thống nhất đẩy nhanh kết thúc chiến tranh và thành lập Liên hợp quốc."}, {"t": "Việc phân chia phạm vi ảnh hưởng ở châu Âu và châu Á giữa các cường quốc trong Hội nghị I-an- ta (1945) cho thấy sự phân tuyến trong quan hệ quốc tế ngay khi chiến tranh chưa kết thúc", "a": true, "e": "Việc phân chia phạm vi ảnh hưởng cho thấy sự phân tuyến ngay khi chiến tranh chưa kết thúc."}]}, {"n": 3, "p": ["Đọc đoạn tư liệu sau đây:", "“Theo Hiến chương, Liên hợp quốc được thành lập nhằm bốn mục tiêu: 1. Duy trì hòa bình và an ninh quốc tế: 2. Thúc đẩy quan hệ hữu nghị giữa các dân tộc trên cơ sở tôn trọng quyền bình đẳng, quyền tự quyết dân tộc và củng cổ hoà bình thế giới: 3. Thúc đẩy hợp tác quốc tế để giải quyết các vấn đề kinh tế, xã hội, văn hóa, nhân đạo, đảm bảo quyền con người và quyền tự do cơ bản cho mọi người không phân biệt chủng tộc, giới tính, tôn giáo, ngôn ngữ, 4. Liên hợp quốc đóng vai trò là trung tâm điều hoà các nỗ lực quốc tế vì những mục tiêu trên”.", "(Sách giáo khoa Lịch sử 12, bộ Kết nối tri thức với cuộc sống, trang 8)"], "s": [{"t": "Hiến chương là văn kiện chính trị quan trọng nhất của tổ chức Liên hợp quốc.", "a": true, "e": "Hiến chương là văn kiện chính trị quan trọng nhất của Liên hợp quốc."}, {"t": "Hiến chương đã xác định Liên hợp quốc là tổ chức quốc tế lớn nhất hành tinh.", "a": false, "e": "Hiến chương nêu mục tiêu và nguyên tắc, không xác định Liên hợp quốc là “tổ chức lớn nhất hành tinh”."}, {"t": "Cơ sở các mối quan hệ quốc tế ở Hiến chương là bình đẳng, tự quyết, hòa bình.", "a": true, "e": "Mục tiêu 1 và 2 đề cao hòa bình, bình đẳng và quyền tự quyết dân tộc."}, {"t": "Liên Xô, Mỹ, Anh, Pháp, Trung Quốc là những nước đã chi phối Hiến chương.", "a": false, "e": "Năm nước này khởi xướng, soạn thảo và nắm quyền phủ quyết (nguyên tắc nhất trí giữa 5 cường quốc)."}]}, {"n": 4, "p": ["Đọc đoạn tư liệu sau đây:", "“Ngay từ khi thành lập, Liên hợp quốc đã nỗ lực thúc đẩy việc xây dựng và ký kết những văn bản, điều ước quốc tế quan trọng nhằm bảo đảm quyền cơ bản của con người (đặc biệt là quyền đối với phụ nữ), xây dựng một thế giới an toàn hơn, công bằng hơn và tạo cơ hội phát triển cho tất cả mọi người.", "Tại Hội nghị Thượng đỉnh Thiên niên kỷ năm 2000, Liên hợp quốc (LHQ) đã đề ra Mục tiêu Phát triển Thiên niên kỷ, nhằm xoá bỏ đói nghèo, hoàn thành phổ cập giáo dục tiểu học, tăng cường bình đẳng giới và vị thế, năng lực của phụ nữ, giảm tỉ lệ tử vong ở trẻ em, cải thiện sức khoẻ bà mẹ, phòng chống HIV/AIDS, sốt rét và các bệnh dịch khác, bảo đảm bền vững môi trường....", "Liên hợp quốc cũng có sự hỗ trợ hiệu quả đối với các nước trong quá trình phát triển văn hóa, xã hội, giáo dục, y tế", "(Sách giáo khoa Lịch sử 12, bộ Cánh diều, trang 8)"], "s": [{"t": "Đảm bảo quyền con người là một trong những mục tiêu lớn của Liên hợp quốc.", "a": true, "e": "Quyền con người là một mục tiêu lớn của Liên hợp quốc."}, {"t": "Để thực hiện mục tiêu trên, LHQ đã đề ra mục tiêu phát triển Thiên niên kỷ.", "a": true, "e": "Mục tiêu Phát triển Thiên niên kỷ (2000) nhằm thực hiện các mục tiêu đó."}, {"t": "Mục tiêu Thiên niên kỷ của LHQ đã được thực hiện thành công trên toàn cầu.", "a": false, "e": "Mục tiêu Thiên niên kỷ chưa hoàn thành trên toàn cầu."}, {"t": "Các nước nghèo được LHQ đầu tư để phát triển văn hóa, xã hội, giáo dục, y tế.", "a": false, "e": "Liên hợp quốc hỗ trợ các nước phát triển văn hóa, xã hội, giáo dục, y tế."}]}, {"n": 5, "p": ["Đọc đoạn tư liệu sau đây:", "“Hội đồng Bảo an Liên hợp quốc gồm 15 nước thành viên, trong đó có 5 nước Ủy viên thường trực, thường được gọi là Nhóm P5, gồm: Mỹ, Anh, Pháp, Liên bang Nga và Trung Quốc, - có quyền quyết định các vấn đề trọng đại của thể giới. 10 nước thành viên không thường trực (gọi tắt là Nhóm E10) do Đại hội đồng Liên hợp quốc bầu ra với nhiệm kỳ hai năm. Việt Nam đã được bầu làm Ủy viên không thường trực Hội đồng Bảo an Liên hợp quốc ở nhiệm kỳ 2008 - 2009 và nhiệm kỳ 2020-2021.“", "(Sách giáo khoa Lịch sử 12, bộ Chân trời sáng tạo, trang 8)."], "s": [{"t": "5 Ủy viên thường trực đầu tiên của LHQ là Liên Xô, Mỹ, Anh, Pháp, Trung Quốc.", "a": true, "e": "Năm ủy viên thường trực đầu tiên: Liên Xô, Mỹ, Anh, Pháp, Trung Quốc."}, {"t": "Hội đồng Bảo an có quyền quyết định mọi vấn đề của Liên hợp quốc và thế giới.", "a": false, "e": "Hội đồng Bảo an chịu trách nhiệm chính về hòa bình, an ninh quốc tế, không phải “mọi vấn đề”."}, {"t": "Nguyên tắc hoạt động của thành viên Hội đồng bảo an là nhất trí cao giữa 15 nước.", "a": false, "e": "Nguyên tắc là nhất trí giữa 5 nước ủy viên thường trực (quyền phủ quyết), không phải 15 nước."}, {"t": "Việt Nam đã 2 lần được bầu là ủy viên thường trực Hội đồng bảo an Liên hợp quốc.", "a": false, "e": "Việt Nam là ủy viên không thường trực (2008–2009 và 2020–2021)."}]}, {"n": 6, "p": ["Đọc đoạn tư liệu sau đây:", "“Các cơ quan chuyên môn của Liên hợp quốc như Tổ chức Giáo dục, Khoa học và Văn hóa Liên hợp quốc (UNESCO), Tổ chức Y tế thế giới (WHO), Tổ chức Lao động quốc tế (ILO) đã góp phần thắt chặt sự hợp tác về giáo dục, khoa học, văn hóa, xã hội giữa các quốc gia thành viên, đảm bảo quyền có việc làm, quyền được chăm sóc y tế,... của người dân. Các quỹ, chương trình của Liên hợp quốc như Quỹ Dân số Liên hợp quốc (UNFPA), Quỹ Nhi đồng Liên hợp quốc (UNICEF), Chương trình Môi trường Liên hợp quốc (UNEP),... đã thúc đẩy giải quyết các vấn đề thách thức toàn cầu, chú trọng các vấn đề giáo dục, nhân đạo...“", "(Sách giáo khoa Lịch sử 12, bộ Chân trời sáng tạo, trang 11)"], "s": [{"t": "Cơ quan chuyên môn của LHQ chịu trách nhiệm duy trì hòa bình và an ninh thế giới.", "a": false, "e": "Duy trì hòa bình, an ninh là nhiệm vụ của Hội đồng Bảo an."}, {"t": "Mọi vấn đề lớn của thế giới phải được ít nhất 2/3 các cơ quan chuyên môn thông qua", "a": false, "e": "Không có quy định nào như vậy."}, {"t": "Các cơ quan chuyên môn đã thúc đẩy việc giải quyết nhiều vấn để mang tính toàn cầu.", "a": true, "e": "Các cơ quan chuyên môn thúc đẩy giải quyết nhiều vấn đề toàn cầu về giáo dục, y tế, lao động…"}, {"t": "Kinh phí hoạt động của các cơ quan chuyên môn chủ yếu do các thành viên đóng góp.", "a": true, "e": "Kinh phí chủ yếu do các nước thành viên đóng góp."}]}, {"n": 7, "p": ["Đọc đoạn tư liệu sau đây:", "“Với vai trò là tổ chức quốc tế lớn nhất, Liên hợp quốc đã góp phần giải quyết xung đột, tranh chấp ở nhiều khu vực, khôi phục hòa bình và hỗ trợ tái thiết ở nhiều quốc gia. Từ sau năm 1945 đến nay, Liên hợp quốc góp phần thúc đẩy quá trình phi thực dân hóa, xóa bỏ chủ nghĩa thực dân trên phạm vi toàn cầu, thủ tiêu các hình thức của chế độ phân biệt chủng tộc. Liên hợp quốc xây dựng được một hệ thống các công ước, hiệp ước quốc tế về giải trừ quân bị cũng như ngăn chặn phổ biến vũ khí hủy diệt hàng loạt...“", "(Sách giáo khoa Lịch sử 12, bộ Chân trời sáng tạo, trang 8.9)"], "s": [{"t": "Liên hợp quốc góp phần giải quyết các xung đột, tranh chấp ở nhiều quốc gia, khu vực.", "a": false, "e": "Liên hợp quốc góp phần giải quyết nhiều xung đột, tranh chấp."}, {"t": "Quá trình phi thực dân hóa trên toàn cầu gắn với vai trò quyết định của Liên hợp quốc.", "a": false, "e": "Liên hợp quốc chỉ góp phần; vai trò quyết định là phong trào giải phóng dân tộc."}, {"t": "Chế độ Apacthai ở Nam Phi bị thủ tiêu có những đóng góp nhất định của Liên hợp quốc.", "a": true, "e": "Liên hợp quốc có đóng góp nhất định trong việc xóa bỏ chế độ Apacthai."}, {"t": "ABM, SALT 1, SALT 2 là các văn kiện nhằm giải trừ vũ khí hạt nhân của Liên hợp quốc.", "a": false, "e": "ABM, SALT là hiệp ước giữa Mỹ và Liên Xô, không phải văn kiện của Liên hợp quốc."}]}, {"n": 8, "p": ["Đọc đoạn tư liệu sau đây:", "Tư liệu 1: “Năm 1948, Đại hội đồng Liên hợp quốc thông qua tuyên ngôn Nhân quyền, khẳng định những quyền cơ bản của con người. Văn kiện này làm cơ sở cho việc ra đời hơn 80 công ước và tuyên bố quốc tế về quyền con người...nhằm đảm bảo việc thực thi quyền con người, xây dựng một thế giới công bằng và an toàn hơn.”", "Tư liệu 2: “Tuyên ngôn Nhân quyền của Liên Hợp quốc được đánh giá là một “văn kiện đột phá” có tính pháp lý cao, đặt ra các quyền con người, vượt lên những giới hạn về văn hóa, tôn giáo, chính trị và pháp luật. Tuyên ngôn đã được tất cả các nước thành viên phê chuẩn và dịch ra hàng trăm thứ tiếng. Giá trị lớn lao của bản “Tuyên ngôn Nhân quyền“ đã được cả nhân loại thừa nhận, trở thành mục tiêu vươn tới của mọi quốc gia, dân tộc.", "(Sách giáo khoa Lịch sử 12, bộ Chân trời sảng tạo, trang 10, 11)"], "s": [{"t": "Tuyên ngôn Nhân quyền Liên hợp quốc khẳng định quyền cơ bản của con người.", "a": true, "e": "Tuyên ngôn Nhân quyền khẳng định các quyền cơ bản của con người."}, {"t": "Tuyên ngôn Nhân quyền là văn kiện chính trị quan trọng nhất của Liên hợp quốc.", "a": false, "e": "Văn kiện chính trị quan trọng nhất của Liên hợp quốc là Hiến chương."}, {"t": "Tuyên ngôn Nhân quyền có tính pháp lý vì nó đã được dịch ra hàng trăm thứ tiếng.", "a": false, "e": "Tính pháp lý không đến từ việc được dịch ra nhiều thứ tiếng."}, {"t": "Giá trị bản Tuyên ngôn này đã đặt ra những giới hạn về văn hóa, tôn giáo, pháp luật.", "a": false, "e": "Tuyên ngôn vượt lên các giới hạn về văn hóa, tôn giáo, pháp luật, chứ không đặt ra giới hạn."}]}, {"n": 9, "p": ["Đọc đoạn tư liệu sau đây:", "Tư liệu 1: “Trong số các mục tiêu của Liên hợp quốc, mục tiêu duy trì hòa bình và an ninh thế giới được chú trọng và là cơ sở đề thực hiện các mục tiêu khác. Để đảm bảo Liên hợp quốc là một tổ chức quốc tế thực sự phục vụ mục tiêu chung của cộng đồng quốc tế, Hiến chương Liên hợp quốc quy định rõ các nguyên tắc hoạt động của tổ chức này“.", "Tư liệu 2: “Các nguyên tắc hoạt động của Liên hợp quốc bao gồm: Bình đẳng về chủ quyền quốc gia; Tôn trọng toàn vẹn lãnh thổ và độc lập chính trị quốc gia; Tử bỏ đe dọa vũ lực hoặc sử dụng vũ lực trong quan hệ quốc tế: Không can thiệp vào công việc nội bộ các nước, Tôn trọng các nghĩa vụ quốc tế và luật pháp quốc tế, Giải quyết các tranh chấp quốc tế bằng biện pháp hòa bình“.", "(Sách giáo khoa Lịch sử 12, bộ Kết nối tri thức với cuộc sống, trang 8,9)"], "s": [{"t": "“Duy trì hòa bình và an ninh thế giới“ là mục tiêu cơ bản nhất của Liên hợp quốc.", "a": true, "e": "Duy trì hòa bình và an ninh thế giới là mục tiêu cơ bản nhất (tư liệu 1)."}, {"t": "Để duy trì hòa bình và an ninh thế giới, chỉ cần sự nhất trí cao giữa 5 cường quốc.", "a": false, "e": "Không phải “chỉ cần” 5 cường quốc: còn phải tôn trọng các nguyên tắc khác của Hiến chương."}, {"t": "Việt Nam chủ trương giải quyết tranh chấp ở biển Đông theo nguyên tắc của LHQ.", "a": true, "e": "Việt Nam chủ trương giải quyết tranh chấp bằng biện pháp hòa bình."}, {"t": "Nguyên tắc hoạt động của Liên hợp quốc chưa bị vi phạm bởi bất kỳ quốc gia nào.", "a": false, "e": "Các nguyên tắc của Liên hợp quốc đã bị vi phạm nhiều lần."}]}, {"n": 10, "p": ["Đọc đoạn tư liệu sau đây:", "“Trước hết, Liên hợp quốc góp phần ngăn ngừa không để xảy ra một cuộc chiến tranh thế giới mới kể từ sau năm 1945 đến nay.", "Thứ hai, Liên hợp quốc triển khai hoạt động gìn giữ hòa bình ở nhiều khu vực trên thế giới, góp phần chấm dứt nhiều cuộc xung đột... và hỗ trợ cho tiến trình tái thiết ở nhiều quốc gia thành viên.", "Thứ ba, Liên hợp quốc đã xây dựng và soạn thảo được hệ thống các công ước quốc tế về giải trừ quân bị, chống chạy đua vũ trang.", "Thứ tư. Liên hợp quốc đã thành công trong việc thúc đẩy quá trình giành độc lập của các nước thuộc địa và phụ thuộc.", "(Sách giáo khoa Lịch sử 12, bộ Kết nối tri thức với cuộc sống, trang 8, 9)"], "s": [{"t": "Từ năm 1945 đến nay, nhờ vai trò của Liên hợp quốc, trên thế giới không xảy ra cuộc chiến tranh nào.", "a": false, "e": "Chỉ ngăn được chiến tranh thế giới mới; chiến tranh, xung đột cục bộ vẫn xảy ra."}, {"t": "Hoạt động giữ gìn hòa bình của Liên hợp quốc đã góp phần ngăn chặn, chấm dứt các cuộc xung đột", "a": true, "e": "Hoạt động gìn giữ hòa bình góp phần ngăn chặn, chấm dứt nhiều xung đột."}, {"t": "Các công ước quốc tế về chống chạy đua vũ trang đã giải trừ hoàn toàn các cuộc chạy đua vũ trang.", "a": false, "e": "Các công ước chưa giải trừ hoàn toàn chạy đua vũ trang."}, {"t": "Các nước thuộc địa, phụ thuộc giành độc lập thành công là do hoạt động của Liên hợp quốc", "a": false, "e": "Các nước giành độc lập chủ yếu nhờ đấu tranh của nhân dân; Liên hợp quốc chỉ thúc đẩy."}]}]};
+const $=id=>document.getElementById(id);
+const app=$('app');
+const MODES=[['mc','Nhiều lựa chọn','Chọn 1 đáp án đúng trong 4 đáp án'],['hi','Mức “Hiểu”','Câu hỏi hiểu và vận dụng về ASEAN'],['ds','Đúng – Sai','Đọc tư liệu, đánh giá từng ý a, b, c, d']];
+const TT={mc:'Nhiều lựa chọn',hi:'Mức “Hiểu”',ds:'Đúng – Sai'};
+let st=null,shuf=false;
+const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 
-    <!-- Khung thông báo -->
-    <div class="notification-card">
-        <div class="spinner"></div>
-        <div class="title">ĐANG CHỜ ĐÁP ÁN<br>TỪ CÔ</div>
-        <div class="subtitle">Hệ thống đang cập nhật, vui lòng đợi trong giây lát...</div>
-        
-        <!-- Bản quyền Manh coder lor -->
-        <div class="coder-credit">
-            Coded by: <strong>Manh coder lor</strong> 😎
-        </div>
-    </div>
+function home(){
+  st=null;
+  app.innerHTML=`<h1>Ôn tập Lịch sử 12 · GK1 - Manh coder lor</h1><p class="sub">Trật tự thế giới, Liên hợp quốc và ASEAN</p>
+  <div class="modes">${MODES.map(m=>`<button class="mode" data-a="start" data-k="${m[0]}"><div><b>${m[1]}</b><span>${m[2]}</span></div><div class="cnt">${D[m[0]].length}</div></button>`).join('')}</div>
+  <label class="chk"><input type="checkbox" ${shuf?'checked':''} data-a="shuf"> Xáo trộn thứ tự câu hỏi</label>
+  <p class="sub">Phím tắt: 1–4 hoặc A–D để chọn đáp án; Enter hoặc → để sang câu tiếp.</p>`;
+}
+function start(k,list){
+  const it=(list||D[k]).slice();
+  if(shuf)for(let i=it.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[it[i],it[j]]=[it[j],it[i]];}
+  st={k,it,i:0,score:0,max:0,wrong:[]};
+  show();
+}
+function topBar(){
+  return `<div class="top"><button class="ghost" data-a="home">← Trang chủ</button><div class="meta">${TT[st.k]} · Câu ${st.i+1}/${st.it.length} · Đúng <span id="sc">${st.score}</span>/<span id="mx">${st.max}</span></div></div><div class="bar"><i style="width:${st.i/st.it.length*100}%"></i></div>`;
+}
+const upd=()=>{$('sc').textContent=st.score;$('mx').textContent=st.max};
+const nextBtn=()=>`<button class="btn" data-a="nxt">${st.i+1>=st.it.length?'Xem kết quả':'Câu tiếp →'}</button>`;
 
+function show(){
+  if(st.i>=st.it.length)return result();
+  st.ans=false;st.n=0;st.bad=false;
+  const q=st.it[st.i];
+  if(st.k==='ds'){
+    app.innerHTML=topBar()+`<div class="card"><div class="qn">Câu ${q.n}</div><div class="pas">${q.p.map(x=>`<p>${esc(x)}</p>`).join('')}</div>${q.s.map((s,j)=>`<div class="st" id="s${j}"><div><b>${'abcd'[j]})</b> ${esc(s.t)}</div><div class="tf"><button data-a="ds" data-j="${j}" data-v="1">Đúng</button><button data-a="ds" data-j="${j}" data-v="0">Sai</button></div><div class="ex"></div></div>`).join('')}<div id="nx"></div></div>`;
+  }else{
+    app.innerHTML=topBar()+`<div class="card" id="cd"><div class="qn">Câu ${q.n}</div><div class="qt">${esc(q.q)}</div>${q.o.map((o,j)=>`<button class="opt" data-a="mc" data-j="${j}"><b>${'ABCD'[j]}</b><span>${esc(o)}</span></button>`).join('')}<div id="fb"></div></div>`;
+  }
+}
+function pickMC(j){
+  if(st.ans)return;st.ans=true;
+  const q=st.it[st.i],ok=j===q.a,bs=document.querySelectorAll('.opt');
+  $('cd').classList.add('locked');
+  bs[j].classList.add(ok?'ok':'no');
+  if(!ok)bs[q.a].classList.add('rev');
+  st.max++;if(ok)st.score++;else st.wrong.push(q);
+  upd();
+  $('fb').innerHTML=`<div class="fb ${ok?'ok':'no'}">${ok?'✓ Chính xác!':'✗ Chưa đúng. Đáp án đúng là '+'ABCD'[q.a]+'.'}</div>${q.note?`<div class="note">${esc(q.note)}</div>`:''}${nextBtn()}`;
+}
+function pickDS(j,v){
+  const q=st.it[st.i],s=q.s[j],row=$('s'+j);
+  if(row.classList.contains('done'))return;
+  const ok=v===s.a,bt=row.querySelectorAll('.tf button');
+  row.classList.add('done',ok?'ok':'no');
+  bt[v?0:1].classList.add(ok?'ok':'no');
+  if(!ok)bt[s.a?0:1].classList.add('rev');
+  row.querySelector('.ex').textContent=(ok?'✓ Chính xác. ':'✗ Chưa đúng. ')+'Đáp án: '+(s.a?'Đúng':'Sai')+'. '+(s.e||'');
+  st.max++;if(ok)st.score++;else if(!st.bad){st.bad=true;st.wrong.push(q)}
+  st.n++;upd();
+  if(st.n===4){st.ans=true;$('nx').innerHTML=nextBtn()}
+}
+function nxt(){st.i++;show();window.scrollTo(0,0)}
+function result(){
+  const p=Math.round(st.score/st.max*100),w=st.wrong;
+  app.innerHTML=`<div class="card res"><div class="qn">Kết quả · ${TT[st.k]}</div><div class="big">${st.score}/${st.max}</div><div>${p}% ${p>=80?'· Rất tốt! 🎉':p>=50?'· Khá ổn, ôn thêm các câu sai nhé':'· Cần ôn lại thêm'}</div>
+  ${w.length?`<ul class="wl">${w.map(q=>`<li>Câu ${q.n}: ${esc((q.q||q.p[1]||q.p[0]).slice(0,90))}…</li>`).join('')}</ul><button class="btn" data-a="retry">Làm lại ${w.length} câu sai</button>`:'<p>Không sai câu nào, quá xuất sắc!</p>'}
+  <button class="btn sec" data-a="again">Làm lại từ đầu</button><button class="btn sec" data-a="home">Trang chủ</button></div>`;
+}
+document.addEventListener('keydown',e=>{
+  if(!st||st.i>=st.it.length)return;
+  const k=e.key.toLowerCase();
+  if(st.k!=='ds'&&!st.ans){
+    const x='1234'.includes(k)&&k.length===1?'1234'.indexOf(k):'abcd'.includes(k)&&k.length===1?'abcd'.indexOf(k):-1;
+    if(x>=0)pickMC(x);
+  }else if(st.ans&&(k==='enter'||k==='arrowright')){e.preventDefault();nxt();}
+});
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-a]');if(!t)return;
+  const a=t.dataset.a,j=+t.dataset.j;
+  if(a==='start')start(t.dataset.k);else if(a==='home')home();else if(a==='nxt')nxt();
+  else if(a==='mc')pickMC(j);else if(a==='ds')pickDS(j,t.dataset.v==='1');
+  else if(a==='retry')start(st.k,st.wrong);else if(a==='again')start(st.k);
+});
+document.addEventListener('change',e=>{if(e.target.dataset.a==='shuf')shuf=e.target.checked;});
+home();
+</script>
 </body>
 </html>
